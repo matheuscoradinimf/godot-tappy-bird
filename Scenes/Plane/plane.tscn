@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cr87y174bxgu6"]
 
 [ext_resource type="Texture2D" uid="uid://bn7r1nsw46b1" path="res://assets/plane/planes_sheet.png" id="1_i5kvk"]
-[ext_resource type="Script" uid="uid://c2p3nsk0cw5m" path="res://Scripts/Plane/plane.gd" id="1_ysjh7"]
+[ext_resource type="Script" uid="uid://c2p3nsk0cw5m" path="res://Scenes/Plane/plane.gd" id="1_ysjh7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ysjh7"]
 atlas = ExtResource("1_i5kvk")
@@ -33,8 +33,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nrpf8"]
-radius = 36.0
-height = 85.0
+radius = 32.0
+height = 78.0
 
 [sub_resource type="Animation" id="Animation_nrpf8"]
 length = 0.001

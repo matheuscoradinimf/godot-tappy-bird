@@ -1,0 +1,134 @@
+[gd_scene load_steps=11 format=3 uid="uid://dumoelfbc0776"]
+
+[ext_resource type="Script" uid="uid://ckbf7nsbe6re" path="res://Scenes/Main/main.gd" id="1_lbqar"]
+[ext_resource type="Texture2D" uid="uid://do88xmrk7s4p5" path="res://assets/background/sky.png" id="1_sjpro"]
+[ext_resource type="LabelSettings" uid="uid://d13di7ic55548" path="res://Resources/red_title_96.tres" id="2_65dfk"]
+[ext_resource type="LabelSettings" uid="uid://cuw5t2nu0110b" path="res://Resources/red_24.tres" id="3_lbqar"]
+[ext_resource type="FontFile" uid="uid://3nr0hk7m2pqc" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="4_y7ccn"]
+[ext_resource type="AudioStream" uid="uid://bf4nccrgbwtuo" path="res://assets/audio/bgm_menu.mp3" id="5_65dfk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g5e4j"]
+font = ExtResource("4_y7ccn")
+font_size = 45
+font_color = Color(0.843137, 1, 1, 1)
+outline_size = 2
+outline_color = Color(0.133196, 0.133196, 0.133196, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 1, 0.87451)
+
+[sub_resource type="Animation" id="Animation_sjpro"]
+resource_name = "flashing"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/PressToPlay:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.2, 0.3, 0.466667, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.243137), Color(1, 1, 1, 0.243137), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_65dfk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/PressToPlay:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lbqar"]
+_data = {
+&"RESET": SubResource("Animation_65dfk"),
+&"flashing": SubResource("Animation_sjpro")
+}
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lbqar")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_sjpro")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Title" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "TAPPY
+PLANE"
+label_settings = ExtResource("2_65dfk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Highscore" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "HIGHSCORE"
+label_settings = ExtResource("3_lbqar")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Value" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "0"
+label_settings = ExtResource("3_lbqar")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PressToPlay" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "PRESS SPACE
+TO
+PLAY"
+label_settings = SubResource("LabelSettings_g5e4j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lbqar")
+}
+autoplay = "flashing"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_65dfk")
+volume_db = -20.0
+autoplay = true
