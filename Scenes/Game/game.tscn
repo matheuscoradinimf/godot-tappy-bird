@@ -1,16 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://bh3baqdhvpdne"]
+[gd_scene load_steps=6 format=3 uid="uid://bh3baqdhvpdne"]
 
 [ext_resource type="Script" uid="uid://oh41oc6jyyke" path="res://Scenes/Game/game.gd" id="1_6vegk"]
-[ext_resource type="Texture2D" uid="uid://cgpd4jidcokk3" path="res://assets/background/rocks_2.png" id="1_i2ark"]
 [ext_resource type="PackedScene" uid="uid://cr87y174bxgu6" path="res://Scenes/Plane/plane.tscn" id="2_qdv6a"]
 [ext_resource type="PackedScene" uid="uid://ds6dlstps7tk7" path="res://Scenes/Barrier/barrier.tscn" id="3_kxpmq"]
+[ext_resource type="PackedScene" uid="uid://c3yx7rdqmqvvw" path="res://Scenes/GameUi/game_ui.tscn" id="5_ciybh"]
+[ext_resource type="PackedScene" uid="uid://bxj2drdtymgys" path="res://Scenes/Parallax/parallax_bg.tscn" id="6_flgk0"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_6vegk")
 
-[node name="Rocks2" type="Sprite2D" parent="."]
-position = Vector2(266, 311)
-texture = ExtResource("1_i2ark")
+[node name="ParallaxBg" parent="." instance=ExtResource("6_flgk0")]
+scale = Vector2(0.79, 0.79)
 
 [node name="Plane" parent="." instance=ExtResource("2_qdv6a")]
 position = Vector2(90, 101)
@@ -29,5 +29,8 @@ position = Vector2(566, 166)
 [node name="LowerPoint" type="Marker2D" parent="."]
 position = Vector2(565, 625)
 
-[connection signal="plane_died" from="Plane" to="." method="_on_plane_plane_died"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameUi" parent="CanvasLayer" instance=ExtResource("5_ciybh")]
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

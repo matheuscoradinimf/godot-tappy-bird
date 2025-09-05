@@ -2,19 +2,19 @@ extends CharacterBody2D
 
 class_name Tappy
 
-signal plane_died
-
 var _gravity: float = ProjectSettings.get("physics/2d/default_gravity")
 
 const JUMP_FORCE: float = 300
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var engine_sound: AudioStreamPlayer = $EngineSound
 
 func die() -> void:
+	engine_sound.stop()
 	animated_sprite.stop()
 	set_physics_process(false)
-	plane_died.emit()
+	SignalHub.plane_died.emit()
 
 func fly(delta: float) -> void:
 	velocity.y += _gravity * delta

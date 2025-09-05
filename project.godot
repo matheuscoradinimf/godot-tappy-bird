@@ -15,6 +15,12 @@ run/main_scene="uid://dumoelfbc0776"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SignalHub="*res://Globals/SignalHub.gd"
+GameManager="*res://Globals/GameManager.gd"
+ScoreManager="*res://Globals/ScoreManager.gd"
+
 [debug]
 
 settings/stdout/print_fps=true

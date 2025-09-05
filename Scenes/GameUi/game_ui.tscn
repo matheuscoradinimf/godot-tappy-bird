@@ -1,16 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3yx7rdqmqvvw"]
+[gd_scene load_steps=6 format=3 uid="uid://c3yx7rdqmqvvw"]
 
 [ext_resource type="LabelSettings" uid="uid://veie41ep6fcb" path="res://Resources/red_36.tres" id="1_727vw"]
+[ext_resource type="Script" uid="uid://bpd318deb0k0a" path="res://Scenes/GameUi/game_ui.gd" id="1_vneep"]
 [ext_resource type="LabelSettings" uid="uid://cewqqrl4uohe2" path="res://Resources/red_title_48.tres" id="2_vneep"]
 [ext_resource type="LabelSettings" uid="uid://ctxwu4i8ddrh3" path="res://Resources/WHITE_title_48.tres" id="3_xa7bn"]
+[ext_resource type="AudioStream" uid="uid://dqa3spfsb1tc4" path="res://assets/audio/score.wav" id="5_xa7bn"]
 
 [node name="GameUi" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_vneep")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -28,20 +32,34 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "0"
+text = "0000"
 label_settings = ExtResource("1_727vw")
 
-[node name="GameOver" type="Label" parent="MarginContainer"]
+[node name="PressSpace" type="Label" parent="."]
+visible = false
 layout_mode = 2
+offset_left = 20.0
+offset_top = 402.0
+offset_right = 460.0
+offset_bottom = 451.0
+text = "PRESS SPACE"
+label_settings = ExtResource("3_xa7bn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOver" type="Label" parent="."]
+visible = false
+layout_mode = 2
+offset_left = 119.0
+offset_top = 402.0
+offset_right = 360.0
+offset_bottom = 451.0
 size_flags_horizontal = 4
 text = "GAME OVER"
 label_settings = ExtResource("2_vneep")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PressSpace" type="Label" parent="MarginContainer"]
-layout_mode = 2
-text = "PRESS SPACE"
-label_settings = ExtResource("3_xa7bn")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_xa7bn")
+volume_db = -15.0
