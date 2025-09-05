@@ -2,6 +2,8 @@
 
 A Flappy Bird-style game developed in Godot 4, where you control an airplane that must avoid obstacles and score points.
 
+> **Course**: This game was created following the guidance of the Udemy course "Jumpstart to 2D Game Development: Godot 4.4+ for Beginners"
+
 ## 🎬 Demo Video
 
 https://github.com/user-attachments/assets/c79a66cf-f01a-4d48-b099-8314e4582abd
