@@ -4,7 +4,7 @@ A Flappy Bird-style game developed in Godot 4, where you control an airplane tha
 
 ## 🎬 Demo Video
 
-<!-- Video demo will be added here -->
+https://github.com/user-attachments/assets/c79a66cf-f01a-4d48-b099-8314e4582abd
 
 ## 🎮 How to Play
 
